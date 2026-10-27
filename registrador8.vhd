@@ -11,6 +11,13 @@ end entity;
 
 architecture estrutural of registrador8 is
 
+	component ffd is
+		port (
+			d, clk, clear: in std_logic;
+			q: out std_logic
+		);
+	end component;
+
 	signal q_int, d_int: std_logic_vector(7 downto 0);
 
 begin
@@ -25,9 +32,14 @@ begin
 		end if;
 	end process;
 
-	registrador8bits: for i in 0 to 7 generate
-		ffdi: entity work.ffd port map(d_int(i), clk, clear, q_int(i));
-	end generate;
+	ff0: ffd port map(d_int(0), clk, clear, q_int(0));
+	ff1: ffd port map(d_int(1), clk, clear, q_int(1));
+	ff2: ffd port map(d_int(2), clk, clear, q_int(2));
+	ff3: ffd port map(d_int(3), clk, clear, q_int(3));
+	ff4: ffd port map(d_int(4), clk, clear, q_int(4));
+	ff5: ffd port map(d_int(5), clk, clear, q_int(5));
+	ff6: ffd port map(d_int(6), clk, clear, q_int(6));
+	ff7: ffd port map(d_int(7), clk, clear, q_int(7));
 
 	q <= q_int;
 

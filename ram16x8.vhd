@@ -66,7 +66,10 @@ begin
 	r14: registrador8 port map(din, clk, en(14), clear_i, q14);
 	r15: registrador8 port map(din, clk, en(15), clear_i, q15);
 
-	mux: mux16x1_8
-		port map(q0, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, addr, dout);
+	mux: mux16x1_8 port map(
+		q0, q1, q2, q3, q4, q5, q6, q7,
+		q8, q9, q10, q11, q12, q13, q14, q15,
+		addr, dout
+	);
 
 end estrutural;
